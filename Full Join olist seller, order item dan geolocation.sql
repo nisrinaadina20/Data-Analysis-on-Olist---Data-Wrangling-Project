@@ -1,0 +1,15 @@
+SELECT top 10 olist_geolocation_dataset.geolocation_zip_code_prefix, 
+olist_geolocation_dataset.geolocation_lat,
+olist_geolocation_dataset.geolocation_lng, 
+olist_sellers_dataset.seller_id,
+olist_sellers_dataset.seller_city, 
+olist_sellers_dataset.seller_state,
+olist_order_items_dataset.product_id,
+olist_order_items_dataset.order_item_id,
+olist_order_items_dataset.price,
+olist_order_items_dataset.shipping_limit_date
+FROM olist_sellers_dataset
+FULL OUTER JOIN olist_geolocation_dataset
+ON olist_geolocation_dataset.geolocation_zip_code_prefix = olist_sellers_dataset.seller_zip_code_prefix
+FULL OUTER JOIN olist_order_items_dataset
+ON olist_sellers_dataset.seller_id = olist_order_items_dataset.seller_id
